@@ -12,7 +12,7 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::with('category')->get();
+        $dishes = Dish::with('category')->take(100)->get();
         return view('dishes.index',compact('dishes'));
     }
 

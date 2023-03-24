@@ -6,9 +6,10 @@
     </x-slot>
     @push('css')
         <link rel="stylesheet"
-              href="{{asset('/css/datatables.min.css')}}">
+              href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+        <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
         <script
-            src="{{asset('/js/datatables.min.js')}}"></script>
+            src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     @endpush
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -44,12 +45,7 @@
     </div>
     @push('scripts')
         <script>
-            import DataTable from 'datatables.net-dt';
-            import 'datatables.net-responsive-dt';
-
-            let table = new DataTable('#myTable', {
-                responsive: true
-            });
+            let table = new DataTable('#table');
         </script>
     @endpush
 </x-app-layout>
