@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-            <a href="{{route('categories.index')}}" class="btn btn-success">Kategoriyalar</a>
-            <a href="{{route('dishes.index')}}" class="btn btn-success">Ovqatlar</a>
+        <a href="{{route('categories.index')}}" class="btn btn-success">Kategoriyalar</a>
+        <a href="{{route('dishes.index')}}" class="btn btn-success">Ovqatlar</a>
 
     </x-slot>
 
@@ -14,16 +14,16 @@
                         <tr>
                             <th>id</th>
                             <th>name</th>
-                            <th>parent</th>
+                            <th>category</th>
                             <th>image</th>
                             <th>action</th>
                         </tr>
-                        @foreach($categories as $category)
+                        @foreach($dishes as $dish)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->name_en}}</td>
-                                <td>{{$category->parent_id}}</td>
-                                <td>{{$category->image}}</td>
+                                <td>{{$dish->id}}</td>
+                                <td>{{$dish->name_uz}}</td>
+                                <td>{{$dish->category->name_uz}}</td>
+                                <td>{{$dish->image}}</td>
                                 <td></td>
                             </tr>
                         @endforeach
