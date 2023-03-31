@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [CategoryController::class,'index'])->  middleware('auth');
-
+Route::get('/', function (){
+    return view('index');
+});
+Route::get('locale/{lang}',[\App\Http\Controllers\LocalizationController::class,'setLang']);
 Route::middleware('auth')->group(function () {
     Route::resource('/categories',CategoryController::class);
     Route::resource('/dishes',DishController::class);
