@@ -2,7 +2,6 @@
     <x-slot name="header">
         <a href="{{route('categories.index')}}" class="btn btn-success">Kategoriyalar</a>
         <a href="{{route('dishes.index')}}" class="btn btn-success">Ovqatlar</a>
-
     </x-slot>
 
     <div class="py-12">
