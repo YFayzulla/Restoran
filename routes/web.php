@@ -3,7 +3,9 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\ProfileController;
+use DebugBar\DataCollector\LocalizationCollector;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CategoryController::class,'index'])->name('index')->middleware('auth');
 Route::get('dishes/index', [DishController::class,'index'])->name('dish.index')->middleware('auth');
 Route::get('/menu/{category?}',[HomeController::class,'index'])->name('menu');
+Route::get('locale/{lang}',[LocalizationController::class,'setLang']);
 Route::middleware('auth')->group(function () {
     Route::resource('/categories',CategoryController::class);
     Route::resource('/dishes',DishController::class);
