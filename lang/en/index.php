@@ -1,4 +1,6 @@
 <?php
 return  [
-    'food'=>'Food Menu'
+    'food'=>'Food Menu',
+    'Most Popular Items'=>'Most Popular Items',
+    'Menu'=>'Menu'
 ];

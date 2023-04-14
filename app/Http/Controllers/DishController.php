@@ -25,6 +25,7 @@ class DishController extends Controller
 
     public function create()
     {
+
         $categories=Category::all();
         return view('dishes.create',compact('categories'));
     }

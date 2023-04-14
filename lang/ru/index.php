@@ -1,4 +1,6 @@
 <?php
 return  [
-    'food'=>'Списка Еды'
+    'food'=>'Списка Еды',
+    'Most Popular Items'=>'Папульярный еды',
+    'Menu'=>'Меню'
 ];

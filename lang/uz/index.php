@@ -1,4 +1,6 @@
 <?php
 return  [
-    'food'=>'Ovqatlar royxati'
+    'food'=>'Ovqatlar royxati',
+    'Most Popular Items'=>'Mashxur taomlar',
+    'Menu'=>'royxatlar'
 ];

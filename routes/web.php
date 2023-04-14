@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CategoryController::class,'index'])->name('index')->middleware('auth');
 Route::get('dishes/index', [DishController::class,'index'])->name('dish.index')->middleware('auth');
 Route::get('/menu/{category?}',[HomeController::class,'index'])->name('menu');
-Route::get('locale/{lang}',[LocalizationController::class,'setLang']);
+Route::get('menu/locale/{lang}',[LocalizationController::class,'setLang']);
 Route::middleware('auth')->group(function () {
     Route::resource('/categories',CategoryController::class);
     Route::resource('/dishes',DishController::class);

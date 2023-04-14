@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Restoran - Bootstrap Restaurant Template</title>
+    <title>Restoran</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -81,7 +81,7 @@
                     <ol class="breadcrumb justify-content-center text-uppercase">
 {{--                        <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
 {{--                        <li class="breadcrumb-item"><a href="#">Pages</a></li>--}}
-                        <h2><li class="breadcrumb-item text-warning active" aria-current="page"> Menu</li></h2>
+                        <h2><li class="breadcrumb-item text-warning active" aria-current="page"> {{__('index.Menu')}}</li></h2>
                     </ol>
                 </nav>
             </div>
