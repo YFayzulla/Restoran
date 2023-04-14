@@ -61,7 +61,7 @@
 {{--                    <a href="#" class="nav-item nav-link">Service</a>--}}
 {{--                    <a href="#" class="nav-item nav-link active">Menu</a>--}}
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">til tanlash</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('index.til')}}</a>
                         <div class="dropdown-menu m-0">
                             <a href="locale/en" class="dropdown-item">English</a>
                             <a href="locale/ru" class="dropdown-item">Russia</a>

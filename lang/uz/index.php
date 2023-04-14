@@ -2,5 +2,7 @@
 return  [
     'food'=>'Ovqatlar royxati',
     'Most Popular Items'=>'Mashxur taomlar',
-    'Menu'=>'royxatlar'
+    'Menu'=>'royxatlar',
+    'til'=>'Til tanlash'
+
 ];
