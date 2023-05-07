@@ -4,5 +4,4 @@ return  [
     'Most Popular Items'=>'Mashxur taomlar',
     'Menu'=>'royxatlar',
     'til'=>'Til tanlash'
-
 ];

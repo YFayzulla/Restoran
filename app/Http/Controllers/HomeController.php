@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index(Category $category){
         if (!isset($category->id)) {
-            $category->id=2;
+            $category->id=1;
         }
         $dishes = Dish::where('category_id', $category->id)->get();
         $categories=Category::where('parent_id',0)->get();

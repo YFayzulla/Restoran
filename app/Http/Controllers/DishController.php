@@ -50,6 +50,7 @@ class DishController extends Controller
         $data= new Dish();
 //        dd($request->all());
         if($request->hasfile('image')){
+            dd('salopm');
             $file= $request->file('image');
             $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('asset'),$filename);
@@ -62,7 +63,6 @@ class DishController extends Controller
             $data['category_id']=$request->category_id;
             $data['image']=$filename;
         }
-
         $data->save();
         return redirect()->route('dish.index')->with('success','muofaqiyatliy qoshildi');
     }

@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('content')
-    @php $lang = Illuminate\Support\Facades\Session::get('locale') @endphp
+{{--    @php $lang = Illuminate\Support\Facades\Session::get('locale') @endphp--}}
     <!-- Menu Start -->
     <div class="container-xxl py-5">
         <div class="container">
