@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index', ['categories' => Category::all()]);
+        return view('admin.categories.index', ['categories' => Category::all()]);
     }
 
     /**
@@ -26,6 +26,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(StoreCategoryRequest $request)
     {
         Category::query()->create($request->all());
@@ -53,8 +54,9 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        Category::query()->update($request->all());
-        return redirect()->back()->with('message', 'Category updated successfully');
+//        dd($request, $category);
+        $category->update($request->all());
+        return redirect()->back()->with('message', 'Kategoriya muofaqiyatliy yangilandi');
     }
 
     /**
@@ -63,6 +65,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->back()->with('message', 'Category deleted successfully');
+        return redirect()->back()->with('message', 'Kategoriya muofaqiyatliy o`chirildi');
     }
 }
