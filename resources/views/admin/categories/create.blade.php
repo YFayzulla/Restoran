@@ -3,7 +3,6 @@
     Launch demo modal
 </button>
 
-<!-- Modal -->
 <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -15,13 +14,32 @@
             <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
-                    <input class="form-control border-4" name="name" placeholder="Enter category name" required>
+                    <input class="form-control border-4 m-2" name="name" placeholder="Enter category name" required>
+
+                    <div>
+                        <label class="text-black">
+                            <input type="checkbox" id="showCategoryInput" class="form-checkbox m-2 text-black"
+                                   onclick="toggleInput(this.checked)"> Kategoriyaga biriktirish
+                        </label>
+                    </div>
+
+                    <select id="categoryInput" class="form-control border-4 m-2" name="sub_category" required
+                            style="display:none;">
+                        @foreach($categories as $item)
+
+                            {!! $item->sub_category === null ? "<option value='$item->id'>{$item->name}</option>" : '' !!}
+
+                        @endforeach
+                    </select>
+
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button  class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
