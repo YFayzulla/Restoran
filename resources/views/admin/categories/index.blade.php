@@ -56,16 +56,24 @@
 
 
 <script>
-    // Function to show/hide category input
-    function toggleInput(isChecked) {
-        const categoryInput = document.getElementById('categoryInput');
-        categoryInput.style.display = isChecked ? 'block' : 'none';
+    // Function to show/hide category input based on checkbox
+    function toggleInput(checkboxId, inputId) {
+        const checkbox = document.getElementById(checkboxId);
+        const input = document.getElementById(inputId);
+
+        if (checkbox && input) {
+            input.style.display = checkbox.checked ? 'block' : 'none';
+        }
     }
 
-    // Reset the checkbox when the modal is shown
-    var modal = document.getElementById('create');
-    modal.addEventListener('shown.bs.modal', function () {
-        document.getElementById('showCategoryInput').checked = false;
-        toggleInput(false); // Ensure the category input is hidden initially
+
+    // Reset visibility of dropdowns on modal open
+    document.addEventListener("DOMContentLoaded", function () {
+        const createCheckbox = document.getElementById('showCategoryInputCreate');
+        toggleInput('showCategoryInputCreate', 'categoryInputCreate');
+
+        @foreach($categories as $category)
+        toggleInput('showCategoryInputEdit{{$category->id}}', 'categoryInputEdit{{$category->id}}');
+        @endforeach
     });
 </script>

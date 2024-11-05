@@ -1,25 +1,41 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#edit{{$category->id}}"> edit
+<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#edit{{$category->id}}">
+    Edit
 </button>
 
-<!-- Modal -->
 <div class="modal fade" id="edit{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title text-dark" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title text-dark" id="exampleModalLabel">Edit Category</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-
-            <form action="{{ route('categories.update',$category->id) }}" method="POST">
+            <form action="{{ route('categories.update', $category->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <input class="form-control border-4" name="name" value="{{$category->name}}" placeholder="Enter category name" required>
+                    <input class="form-control border-4 m-2" name="name" value="{{$category->name}}"
+                           placeholder="Enter category name" required>
+                    <div>
+                        <label class="text-black d-flex align-items-center">
+                            <input type="checkbox" id="showCategoryInputEdit{{$category->id}}"
+                                    class="form-checkbox m-2 text-black"
+                                    onclick="toggleInput('showCategoryInputEdit{{$category->id}}', 'categoryInputEdit{{$category->id}}')"
+                                {{ $category->sub_category ? 'checked' : '' }}>Kategoriyaga biriktirish
+
+                        </label>
+                    </div>
+
+
+                    <select id="categoryInputEdit{{$category->id}}" class="form-control border-4 m-2"
+                            name="sub_category" style="{{ $category->sub_category ? '' : 'display:none;' }}">
+                        @foreach($categories as $item)
+                            {!! $item->sub_category === null ? "<option value='$item->id'>{$item->name}</option>" : '' !!}
+                        @endforeach
+                    </select>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button  class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>
