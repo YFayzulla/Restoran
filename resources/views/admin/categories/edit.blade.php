@@ -17,19 +17,17 @@
                            placeholder="Enter category name" required>
                     <div>
                         <label class="text-black d-flex align-items-center">
-                            <input type="checkbox" id="showCategoryInputEdit{{$category->id}}"
-                                    class="form-checkbox m-2 text-black"
-                                    onclick="toggleInput('showCategoryInputEdit{{$category->id}}', 'categoryInputEdit{{$category->id}}')"
+                            <input type="checkbox" id="showCategoryInputEdit{{$category->id}}" name="status"
+                                   class="form-checkbox m-2 text-black"
+                                   onclick="toggleInput('showCategoryInputEdit{{$category->id}}', 'categoryInputEdit{{$category->id}}')"
                                 {{ $category->sub_category ? 'checked' : '' }}>Kategoriyaga biriktirish
-
                         </label>
                     </div>
-
 
                     <select id="categoryInputEdit{{$category->id}}" class="form-control border-4 m-2"
                             name="sub_category" style="{{ $category->sub_category ? '' : 'display:none;' }}">
                         @foreach($categories as $item)
-                            {!! $item->sub_category === null ? "<option value='$item->id'>{$item->name}</option>" : '' !!}
+                            {!! $item->sub_category === null&& $item->id !== $category->id ? "<option value='$item->id'>{$item->name}</option>" : '' !!}
                         @endforeach
                     </select>
                 </div>

@@ -35,13 +35,12 @@
 
                                         <div class="d-flex">
                                             @include('admin.categories.edit')
-                                            <form action="{{route('categories.destroy',$category->id)}}" method="post">
+                                            <form action="{{route('categories.destroy',$category->id)}}" method="post"  onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger ml-1"> trash</button>
+                                                <button class="btn btn-outline-danger ml-1" > trash</button>
                                             </form>
                                         </div>
-
                                     </td>
                                 </tr>
                             @endforeach
@@ -53,7 +52,6 @@
         </div>
     </div>
 </x-app-layout>
-
 
 <script>
     // Function to show/hide category input based on checkbox

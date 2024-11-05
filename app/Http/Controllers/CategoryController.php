@@ -29,7 +29,12 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        Category::query()->create($request->all());
+
+        if ($request->status == 'on')
+            Category::query()->create($request->all());
+        else
+            Category::query()->create(['name' => $request->name]);
+
         return redirect()->back()->with('message', 'Category added successfully');
     }
 
@@ -54,8 +59,14 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-//        dd($request, $category);
-        $category->update($request->all());
+        if ($request->status == 'on') {
+            $category->update($request->all());
+        } else {
+            $category->update([
+                'name' => $category->name,
+                'sub_category' => null
+            ]);
+        }
         return redirect()->back()->with('message', 'Kategoriya muofaqiyatliy yangilandi');
     }
 

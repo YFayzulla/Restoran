@@ -16,7 +16,8 @@
                     <input class="form-control border-4 m-2" name="name" placeholder="Enter category name" required>
                     <div>
                         <label class="text-black d-flex align-items-center">
-                            <input type="checkbox" id="showCategoryInputCreate" class="form-checkbox m-2 text-black"
+                            <input type="checkbox" id="showCategoryInputCreate" name="status"
+                                   class="form-checkbox m-2 text-black"
                                    onclick="toggleInput('showCategoryInputCreate', 'categoryInputCreate')">
                             Kategoriyaga biriktirish
 
