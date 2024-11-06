@@ -10,27 +10,22 @@
                 <h1 class="modal-title text-dark" id="exampleModalLabel">Create Category</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('categories.store') }}" method="POST">
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <input class="form-control border-4 m-2" name="name" placeholder="Enter category name" required>
-                    <div>
-                        <label class="text-black d-flex align-items-center">
-                            <input type="checkbox" id="showCategoryInputCreate" name="status"
-                                   class="form-checkbox m-2 text-black"
-                                   onclick="toggleInput('showCategoryInputCreate', 'categoryInputCreate')">
-                            Kategoriyaga biriktirish
+                    <input class="form-control border-4 m-2" name="name" placeholder="Mahsulot nomi" required>
+                    <input class="form-control border-4 m-2" name="description" placeholder="Qoshimcha malumot" required>
+                    <input class="form-control border-4 m-2" name="price" placeholder="Narxi" required>
 
-                        </label>
-                    </div>
-
-                    <select id="categoryInputCreate" class="form-control border-4 m-2" name="sub_category"
-                            style="display:none;">
-                        @foreach($categories as $item)
-                            {!! $item->sub_category === null ? "<option value='$item->id'>{$item->name}</option>" : '' !!}
+                    <select name="category_id" id="" class="form-control m-2 border-4">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
+
+                    <input type="file" class="form-control border-4 m-2" name="photo" >
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>

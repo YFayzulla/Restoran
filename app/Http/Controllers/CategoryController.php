@@ -35,7 +35,7 @@ class CategoryController extends Controller
         else
             Category::query()->create(['name' => $request->name]);
 
-        return redirect()->back()->with('message', 'Category added successfully');
+        return redirect()->back()->with('success', 'Category added successfully');
     }
 
     /**

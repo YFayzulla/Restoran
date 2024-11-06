@@ -23,7 +23,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <th></th>
                             @foreach($categories as $category)
                                 <tr>
                                     <td class="text-center">{{$category->id}}</td>
@@ -31,6 +30,7 @@
                                     <td class="text-center">
                                         {{ $category->subCategory->name ?? '' }}
                                     </td>
+
                                     <td class="text-center">
 
                                         <div class="d-flex">

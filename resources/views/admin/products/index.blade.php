@@ -11,14 +11,14 @@
             <div class=" dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <x-input-alert_success></x-input-alert_success>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-{{--                    @include('admin.categories.create')--}}
+                    @include('admin.products.create')
                     <div class="table-container">
                         <table class="custom-table">
                             <thead>
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-center">Nomi</th>
-                                <th class="text-center">Taom haqida</th>
+                                <th class="text-center">Qo`shimcha malumot</th>
                                 <th class="text-center">Narxi</th>
                                 <th class="text-center">Kategoriyasi</th>
                                 <th class="text-center">Rasim</th>
@@ -26,7 +26,6 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <th></th>
                             @foreach($products as $Product)
                                 <tr>
                                     <td class="text-center">{{$Product->id}}</td>
@@ -34,11 +33,14 @@
                                     <td class="text-center">{{$Product->description}}</td>
                                     <td class="text-center">{{$Product->price}}</td>
                                     <td class="text-center">{{$Product->category->name}}</td>
-                                    <td class="text-center">{{$Product->image}}</td>
+                                    <td class="text-center">
+                                        <img src="{{ asset('storage/' . $Product->photo) }}" class="mx-auto" style="width: 100px; height: 60px;" alt="uploading...">
+                                    </td>
+
                                     <td class="text-center">
 
                                         <div class="d-flex">
-{{--                                            @include('admin.categories.edit')--}}
+                                            @include('admin.products.edit')
                                             <form action="{{route('products.destroy',$Product->id)}}" method="post"  onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
                                                 @csrf
                                                 @method('DELETE')

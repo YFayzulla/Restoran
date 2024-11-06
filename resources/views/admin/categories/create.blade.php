@@ -13,7 +13,7 @@
             <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
-                    <input class="form-control border-4 m-2" name="name" placeholder="Enter category name" required>
+                    <input class="form-control border-4 m-2" name="name" placeholder="Kategoriya nomi" required>
                     <div>
                         <label class="text-black d-flex align-items-center">
                             <input type="checkbox" id="showCategoryInputCreate" name="status"
