@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone')->unique();
+            $table->integer('salary')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
