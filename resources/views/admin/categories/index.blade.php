@@ -5,10 +5,9 @@
         </h2>
     </x-slot>
 
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class=" dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <x-input-alert_success></x-input-alert_success>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @include('admin.categories.create')
@@ -17,28 +16,31 @@
                             <thead>
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th class="text-center">Nomi</th>
-                                <th class="text-center">Sub kategoriyasi</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Kategoriyasi</th>
                                 <th class="text-center">Harakatlar</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($categories as $category)
-                                <tr>
-                                    <td class="text-center">{{$category->id}}</td>
-                                    <td class="text-center">{{$category->name}}</td>
+                                <tr class="text-center">
+                                    <td class="text-center">{{ $category->id }}</td>
+                                    <td class="text-center">{{ $category->name }}</td>
+
+                                    <!-- Display the main category if this category is a subcategory -->
                                     <td class="text-center">
-                                        {{ $category->subCategory->name ?? '' }}
+                                        {{ $category->parentCategory ? $category->parentCategory->name : '' }}
                                     </td>
 
                                     <td class="text-center">
-
-                                        <div class="d-flex">
+                                        <div style="align-items: center ;justify-content: center; display: flex;">
                                             @include('admin.categories.edit')
-                                            <form action="{{route('categories.destroy',$category->id)}}" method="post"  onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
+                                            <form action="{{ route('categories.destroy', $category->id) }}"
+                                                  method="post"
+                                                  onsubmit="return confirm('Do you want to delete this?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger ml-1" > trash</button>
+                                                <button class="btn btn-outline-danger ml-1">Trash</button>
                                             </form>
                                         </div>
                                     </td>
@@ -52,6 +54,7 @@
         </div>
     </div>
 </x-app-layout>
+
 
 <script>
     // Function to show/hide category input based on checkbox

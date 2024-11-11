@@ -13,17 +13,27 @@
             <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <input class="form-control border-4 m-2" name="name" placeholder="Mahsulot nomi" required>
-                    <input class="form-control border-4 m-2" name="description" placeholder="Qoshimcha malumot" required>
-                    <input class="form-control border-4 m-2" name="price" placeholder="Narxi" required>
+                    <input class="form-control border-4 m-2" name="name" placeholder="Product Name" required>
+                    <input class="form-control border-4 m-2" name="description" placeholder="Additional Information"
+                           required>
+                    <input class="form-control border-4 m-2" name="price" placeholder="Price" required>
 
-                    <select name="category_id" id="" class="form-control m-2 border-4">
+                    <select id="category" class="form-control border-4 m-2" name="category_id"
+                            onchange="loadSubcategories()">
+                        <option value="">Select Category</option>
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
 
-                    <input type="file" class="form-control border-4 m-2" name="photo" >
+                    <!-- Subcategory Select (Initially hidden) -->
+                    <div id="subcategory-container" style="display: none; margin-top: 15px;">
+                        <select id="subcategory" class="form-control border-4 m-2" name="subcategory_id">
+                            <!-- Subcategories will be dynamically added here -->
+                        </select>
+                    </div>
+
+                    <input type="file" class="form-control border-4 m-2" name="photo">
                 </div>
 
                 <div class="modal-footer">

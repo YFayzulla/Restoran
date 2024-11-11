@@ -27,9 +27,11 @@ class ProductController extends Controller
     {
         return view('admin.products.index', [
             'products' => Product::all(),
-            'categories' => Category::query()->where('sub_category', '=', null)->get(),
+            'categories' => Category::query()->whereNull('sub_category')->get(),
+            'subcategories' => Category::query()->whereNotNull('sub_category')->get(),
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +55,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'category_id' => $request->category_id,
+            'category_id' => $request->subcategory_id ?? $request->category_id,
             'photo' => $file
         ]);
 
@@ -94,7 +96,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->category_id = $request->category_id;
+        $product->category_id = $request->subcategory_id ??  $request->category_id;
 
         $product->save();
 

@@ -1,31 +1,48 @@
-<button type="button" class="btn btn-outline-warning ml-4" data-bs-toggle="modal" data-bs-target="#productedit{{$Product->id}}">
-    edit
+<button type="button" class="btn btn-outline-warning ml-4" data-bs-toggle="modal"
+        data-bs-target="#productedit{{$Product->id}}">
+    Edit
 </button>
 
-<!-- Create Modal -->
-<div class="modal fade" id="productedit{{$Product->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Edit Modal for Product -->
+<div class="modal fade" id="productedit{{$Product->id}}" tabindex="-1"
+     aria-labelledby="exampleModalLabel{{$Product->id}}"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title text-dark" id="exampleModalLabel">Create Category</h1>
+                <h1 class="modal-title text-dark" id="exampleModalLabel{{$Product->id}}">Edit Product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('products.update',$Product->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('products.update', $Product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
-                    <input class="form-control border-4 m-2" name="name"  value="{{$Product->name}}" placeholder="Mahsulot nomi" required>
-                    <input class="form-control border-4 m-2" name="description" value="{{$Product->description}}" placeholder="Qoshimcha malumot" required>
-                    <input class="form-control border-4 m-2" name="price" value="{{$Product->price}}" placeholder="Narxi" required>
-                    <select name="category_id" class="form-control m-2 border-4">
+                    <input class="form-control border-4 m-2" name="name" value="{{$Product->name}}"
+                           placeholder="Product Name" required>
+                    <input class="form-control border-4 m-2" name="description" value="{{$Product->description}}"
+                           placeholder="Additional Info" required>
+                    <input class="form-control border-4 m-2" name="price" value="{{$Product->price}}"
+                           placeholder="Price" required>
+                    <select id="category{{$Product->id}}" class="form-control border-4 m-2" name="category_id"
+                            onchange="loadSubcategories({{ $Product->id }})">
+
+                        <option value="">Select Category</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ $category->id == $Product->category_id ? 'selected' : '' }}>
+                            <option value="{{ $category->id }}"
+                                {{ $category->id == $Product->category_id ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach
                     </select>
 
-                    <input type="file" class="form-control border-4 m-2" name="photo" >
+                    <!-- Subcategory Select (Initially hidden) -->
+                    <div id="subcategory-container{{$Product->id}}" style="display: none; margin-top: 15px;">
+                        <select id="subcategory{{$Product->id}}" class="form-control border-4 m-2" name="subcategory_id">
+                            <!-- Subcategories will be dynamically added here -->
+                        </select>
+                    </div>
+
+                    <input type="file" class="form-control border-4 m-2" name="photo">
                 </div>
 
                 <div class="modal-footer">

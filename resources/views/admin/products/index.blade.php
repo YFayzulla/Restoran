@@ -34,17 +34,19 @@
                                     <td class="text-center">{{$Product->price}}</td>
                                     <td class="text-center">{{$Product->category->name}}</td>
                                     <td class="text-center">
-                                        <img src="{{ asset('storage/' . $Product->photo) }}" class="mx-auto" style="width: 100px; height: 60px;" alt="uploading...">
+                                        <img src="{{ asset('storage/' . $Product->photo) }}" class="mx-auto"
+                                             style="width: 100px; height: 60px;" alt="uploading...">
                                     </td>
 
                                     <td class="text-center">
 
                                         <div class="d-flex">
                                             @include('admin.products.edit')
-                                            <form action="{{route('products.destroy',$Product->id)}}" method="post"  onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
+                                            <form action="{{route('products.destroy',$Product->id)}}" method="post"
+                                                  onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger ml-1" > trash</button>
+                                                <button class="btn btn-outline-danger ml-1"> trash</button>
                                             </form>
                                         </div>
                                     </td>
@@ -60,24 +62,36 @@
 </x-app-layout>
 
 <script>
-    // Function to show/hide Product input based on checkbox
-    function toggleInput(checkboxId, inputId) {
-        const checkbox = document.getElementById(checkboxId);
-        const input = document.getElementById(inputId);
+    // Function to load subcategories based on the selected category
+    function loadSubcategories(productId = null) {
+        const categoryId = productId ? document.getElementById('category' + productId).value : document.getElementById('category').value;
+        const subcategoryContainer = productId ? document.getElementById('subcategory-container' + productId) : document.getElementById('subcategory-container');
+        const subcategorySelect = productId ? document.getElementById('subcategory' + productId) : document.getElementById('subcategory');
 
-        if (checkbox && input) {
-            input.style.display = checkbox.checked ? 'block' : 'none';
+        subcategorySelect.innerHTML = '<option value="">kategoriya Tanlang </option>';
+
+        if (categoryId) {
+            fetch(`/api/categories/${categoryId}/subcategories`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.subcategories && data.subcategories.length > 0) {
+                        subcategoryContainer.style.display = 'block';
+                        data.subcategories.forEach(subcategory => {
+                            const option = document.createElement('option');
+                            option.value = subcategory.id;
+                            option.text = subcategory.name;
+                            subcategorySelect.appendChild(option);
+                        });
+                    } else {
+                        subcategoryContainer.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching subcategories:', error);
+                    subcategoryContainer.style.display = 'none';
+                });
+        } else {
+            subcategoryContainer.style.display = 'none';
         }
     }
-
-
-    // Reset visibility of dropdowns on modal open
-    document.addEventListener("DOMContentLoaded", function () {
-        const createCheckbox = document.getElementById('showProductInputCreate');
-        toggleInput('showProductInputCreate', 'ProductInputCreate');
-
-        @foreach($products as $Product)
-        toggleInput('showProductInputEdit{{$Product->id}}', 'ProductInputEdit{{$Product->id}}');
-        @endforeach
-    });
 </script>
