@@ -1,12 +1,12 @@
 <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#edit{{$category->id}}">
-    Edit
+    O`zgartirish
 </button>
 
 <div class="modal fade" id="edit{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title text-dark" id="exampleModalLabel">Edit Category</h1>
+                <h1 class="modal-title text-dark" id="exampleModalLabel">O`zgartirish</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('categories.update', $category->id) }}" method="POST">
@@ -14,7 +14,7 @@
                 @method('PUT')
                 <div class="modal-body">
                     <input class="form-control border-4 m-2" name="name" value="{{$category->name}}"
-                           placeholder="Enter category name" required>
+                           required>
                     <div>
                         <label class="text-black d-flex align-items-center">
                             <input type="checkbox" id="showCategoryInputEdit{{$category->id}}" name="status"
@@ -32,8 +32,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">yopish</button>
+                    <button type="submit" class="btn btn-primary">saqlash</button>
                 </div>
             </form>
         </div>

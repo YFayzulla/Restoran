@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-primary ml-4" data-bs-toggle="modal" data-bs-target="#create">
-    Create
+    Kategoriya yaratish
 </button>
 
 <!-- Create Modal -->
@@ -7,7 +7,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title text-dark" id="exampleModalLabel">Create Category</h1>
+                <h1 class="modal-title text-dark" id="exampleModalLabel">Kategoriya yaratish</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ route('categories.store') }}" method="POST">
@@ -32,8 +32,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">yopish</button>
+                    <button type="submit" class="btn btn-primary">saqlash</button>
                 </div>
             </form>
         </div>

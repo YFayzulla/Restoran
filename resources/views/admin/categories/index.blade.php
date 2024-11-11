@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-white header-custom leading-tight">
-            {{ __('Category') }}
+            {{ __('Kategoriya') }}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                             <thead>
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th class="text-center">Name</th>
+                                <th class="text-center">Nomi</th>
                                 <th class="text-center">Kategoriyasi</th>
                                 <th class="text-center">Harakatlar</th>
                             </tr>
@@ -37,10 +37,10 @@
                                             @include('admin.categories.edit')
                                             <form action="{{ route('categories.destroy', $category->id) }}"
                                                   method="post"
-                                                  onsubmit="return confirm('Do you want to delete this?');">
+                                                  onsubmit="return confirm('o`shirishni xoxlaysizmi?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger ml-1">Trash</button>
+                                                <button class="btn btn-outline-danger ml-1">Yo`q qilish</button>
                                             </form>
                                         </div>
                                     </td>

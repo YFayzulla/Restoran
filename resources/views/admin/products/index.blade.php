@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-white header-custom leading-tight">
-            {{ __('Product') }}
+            {{ __('Menu') }}
         </h2>
     </x-slot>
 
@@ -46,7 +46,7 @@
                                                   onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger ml-1"> trash</button>
+                                                <button class="btn btn-outline-danger ml-1"> yo`q qilish</button>
                                             </form>
                                         </div>
                                     </td>
