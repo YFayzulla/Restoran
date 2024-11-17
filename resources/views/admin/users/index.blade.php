@@ -34,11 +34,11 @@
 {{--                                    </td>--}}
                                     <td class="text-center mx-auto">
                                         <div class="d-flex">
-{{--                                            @include('admin.categories.edit')--}}
+                                            @include('admin.users.edit')
                                             <form action="{{route('users.destroy',$user->id)}}" method="post"  onsubmit="return confirm(' O`chirishni xoxlaysizmi ');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-outline-danger ml-1" > trash</button>
+                                                <button class="btn btn-outline-danger ml-1" > yoq qilish</button>
                                             </form>
                                         </div>
                                     </td>
